@@ -3,7 +3,7 @@
 //  Granis
 //
 //  Created by Octavian Duminica on 15/06/2018.
-//  Copyright © 2018 Endava. All rights reserved.
+//  Copyright © 2018 Duminica Octavian. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,6 @@ class CreateAccountPresenter {
     
     private var username: String?
     private var email: String?
-    private var phone: String?
     private var password: String?
     private var retypedPassword: String?
     
@@ -27,10 +26,6 @@ class CreateAccountPresenter {
     
     func emailChanged(_ newValue: String?) {
         email = newValue
-    }
-    
-    func phoneChanged(_ newValue: String?) {
-        phone = newValue
     }
     
     func passwordChanged(_ newValue: String?) {
@@ -47,7 +42,7 @@ class CreateAccountPresenter {
             return
         }
         
-        AuthService.register(username: username!, email: email!, password: password!, phone: phone!) { (success) in
+        AuthService.register(username: username!, email: email!, password: password!) { (success) in
             if success {
                 completion(true)
             } else {
@@ -83,13 +78,6 @@ class CreateAccountPresenter {
             view?.colorizeRetypePasswordTextFieldBorder()
         }
         
-        if !isPhoneValid() {
-            dataIsValid = false
-            view?.colorizePhoneTextFieldBorderForError()
-        } else {
-            view?.colorizePhoneTextFieldBorder()
-        }
-        
         return dataIsValid
     }
     
@@ -112,12 +100,5 @@ class CreateAccountPresenter {
             return false
         }
         return true
-    }
-    
-    private func isPhoneValid() -> Bool {
-        let regex = "^\\d{10}$"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        let result = predicate.evaluate(with: phone!)
-        return result
     }
 }

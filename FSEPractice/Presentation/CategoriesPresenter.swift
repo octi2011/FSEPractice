@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+class CategoriesPresenter {
+    weak var view: CategoriesView?
+    
+    init(view: CategoriesView) {
+        self.view = view
+    }
+}

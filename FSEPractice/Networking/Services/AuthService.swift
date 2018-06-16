@@ -32,8 +32,8 @@ class AuthService {
         }
     }
     
-    static func register(username: String, email: String, password: String, phone: String, completion: @escaping CompletionHandler) {
-        FirebaseUserService.registerToFirebase(username: username, email: email, password: password, phone: phone) { (success) in
+    static func register(username: String, email: String, password: String, completion: @escaping CompletionHandler) {
+        FirebaseUserService.registerToFirebase(username: username, email: email, password: password) { (success) in
             if success {
                 completion(true)
             } else {

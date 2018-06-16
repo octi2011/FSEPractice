@@ -3,7 +3,7 @@
 //  Granis
 //
 //  Created by Octavian Duminica on 15/06/2018.
-//  Copyright © 2018 Endava. All rights reserved.
+//  Copyright © 2018 Duminica Octavian. All rights reserved.
 //
 
 import UIKit
@@ -18,7 +18,6 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retypePasswordTextField: UITextField!
     @IBOutlet weak var createAccountButton: UIButton!
@@ -39,7 +38,6 @@ class CreateAccountViewController: UIViewController {
         roundCreateAccountButton()
         colorizeUsernameTextFieldBorder()
         colorizeEmailTextFieldBorder()
-        colorizePhoneTextFieldBorder()
         colorizePasswordTextFieldBorder()
         colorizeRetypePasswordTextFieldBorder()
     }
@@ -54,13 +52,12 @@ class CreateAccountViewController: UIViewController {
     @IBAction func onCreateAccountButtonTapped(_ sender: Any) {
         presenter.usernamechanged(usernameTextField.text)
         presenter.emailChanged(emailTextField.text)
-        presenter.phoneChanged(phoneTextField.text)
         presenter.passwordChanged(passwordTextField.text)
         presenter.retypedPasswordChanged(retypePasswordTextField.text)
         startActivityIndicator()
         presenter.register { (success) in
             if success {
-                self.navigateToMyAccountScreen()
+                self.navigateToCategoriesScreen()
                 self.stopActivityIndicator()
             } else {
                 self.displayRegisterFailedAlert()
@@ -76,6 +73,7 @@ class CreateAccountViewController: UIViewController {
 }
 
 extension CreateAccountViewController: CreateAccountView {
+    
     func roundCreateAccountButton() {
         createAccountButton.layer.cornerRadius = Constants.cornerRadius
         createAccountButton.clipsToBounds = true
@@ -91,11 +89,6 @@ extension CreateAccountViewController: CreateAccountView {
         emailTextField.layer.borderWidth = Constants.borderWidth
     }
     
-    func colorizePhoneTextFieldBorder() {
-        phoneTextField.layer.borderColor = UIColor.appBlue.cgColor
-        phoneTextField.layer.borderWidth = Constants.borderWidth
-    }
-    
     func colorizePasswordTextFieldBorder() {
         passwordTextField.layer.borderColor = UIColor.appBlue.cgColor
         passwordTextField.layer.borderWidth = Constants.borderWidth
@@ -104,11 +97,6 @@ extension CreateAccountViewController: CreateAccountView {
     func colorizeRetypePasswordTextFieldBorder() {
         retypePasswordTextField.layer.borderColor = UIColor.appBlue.cgColor
         retypePasswordTextField.layer.borderWidth = Constants.borderWidth
-    }
-    
-    func colorizePhoneTextFieldBorderForError() {
-        phoneTextField.layer.borderColor = UIColor.red.cgColor
-        phoneTextField.layer.borderWidth = Constants.borderWidth
     }
     
     func colorizePasswordTextFieldBorderForError() {
@@ -131,6 +119,10 @@ extension CreateAccountViewController: CreateAccountView {
         emailTextField.layer.borderWidth = Constants.borderWidth
     }
     
+    func navigateToCategoriesScreen() {
+        navigationController?.popToViewController((navigationController?.viewControllers.first)!, animated: true)
+    }
+    
     func displayRegisterFailedAlert() {
         let alert = UIAlertController(title: "Registration failed!", message: "Invalid data!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
@@ -138,12 +130,6 @@ extension CreateAccountViewController: CreateAccountView {
         }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
-    }
-    
-    func navigateToMyAccountScreen() {
-        let myAccountViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardID.myAccountScreen) as! MyAccountViewController
-        myAccountViewController.navigationItem.setHidesBackButton(true, animated: true)
-        navigationController?.pushViewController(myAccountViewController, animated: true)
     }
     
     func startActivityIndicator() {

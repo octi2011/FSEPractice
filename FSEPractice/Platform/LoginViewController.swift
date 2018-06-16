@@ -3,7 +3,7 @@
 //  Granis
 //
 //  Created by Octavian Duminica on 14/06/2018.
-//  Copyright © 2018 Endava. All rights reserved.
+//  Copyright © 2018 Duminica Octavian. All rights reserved.
 //
 
 import UIKit
@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -38,7 +37,6 @@ class LoginViewController: UIViewController {
         roundLoginButton()
         colorizeEmailTextFieldBorder()
         colorizePasswordTextFieldBorder()
-        setupForgotPasswordButtonTitle()
         setupSignupButtonTitle()
     }
     
@@ -55,7 +53,7 @@ class LoginViewController: UIViewController {
         startActivityIndicator()
         presenter.login { (success) in
             if success {
-                self.navigateToMyAccountScreen()
+                self.navigateToCategoriesScreen()
                 self.stopActivityIndicator()
             } else {
                 self.displayLoginFailedAlert()
@@ -91,21 +89,12 @@ extension LoginViewController: LoginView {
         passwordTextField.layer.borderWidth = Constants.borderWidth
     }
     
-    func setupForgotPasswordButtonTitle() {
-        let attributedString = NSMutableAttributedString(string: "Forgot your password? Click here.", attributes: [
-            .font: UIFont.OpenSansRegularSmall!,
-            .foregroundColor: UIColor.appGray
-            ])
-        attributedString.addAttribute(.font, value: UIFont.OpenSansSemiboldSmall!, range: NSRange(location: 22, length: 5))
-        forgotPasswordButton.setAttributedTitle(attributedString, for: .normal)
-    }
-    
     func setupSignupButtonTitle() {
-        let attributedString = NSMutableAttributedString(string: "Don‘t have an account? Signup now!", attributes: [
+        let attributedString = NSMutableAttributedString(string: "Nu aveti inca un cont? Creati unul aici!", attributes: [
             .font: UIFont.OpenSansRegularBig!,
             .foregroundColor: UIColor.appGray
             ])
-        attributedString.addAttribute(.font, value: UIFont.OpenSansSemiboldBig!, range: NSRange(location: 23, length: 6))
+        attributedString.addAttribute(.font, value: UIFont.OpenSansSemiboldBig!, range: NSRange(location: 23, length: 15))
         signupButton.setAttributedTitle(attributedString, for: .normal)
     }
     
@@ -118,15 +107,13 @@ extension LoginViewController: LoginView {
         present(alert, animated: true, completion: nil)
     }
     
-    func navigateToMyAccountScreen() {
-        let myAccountViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardID.myAccountScreen) as! MyAccountViewController
-        myAccountViewController.navigationItem.setHidesBackButton(true, animated: true)
-        navigationController?.pushViewController(myAccountViewController, animated: true)
-    }
-    
     func navigateToCreateAccountScreen() {
         let createAccountController = storyboard?.instantiateViewController(withIdentifier: StoryboardID.createAccountScreen) as! CreateAccountViewController
         navigationController?.pushViewController(createAccountController, animated: true)
+    }
+    
+    func navigateToCategoriesScreen() {
+        navigationController?.popToViewController((navigationController?.viewControllers.first)!, animated: true)
     }
     
     func startActivityIndicator() {

@@ -7,21 +7,77 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09243796F329F46ED4746C38 /* Pods_FSEPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4FF657BD8E82D34BEBCC4 /* Pods_FSEPractice.framework */; };
 		DEC3C85B20D5076500FCBFBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C85A20D5076500FCBFBD /* AppDelegate.swift */; };
-		DEC3C85D20D5076500FCBFBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C85C20D5076500FCBFBD /* ViewController.swift */; };
+		DEC3C85D20D5076500FCBFBD /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C85C20D5076500FCBFBD /* CategoriesViewController.swift */; };
 		DEC3C86020D5076500FCBFBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C85E20D5076500FCBFBD /* Main.storyboard */; };
 		DEC3C86220D5076800FCBFBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C86120D5076800FCBFBD /* Assets.xcassets */; };
 		DEC3C86520D5076800FCBFBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C86320D5076800FCBFBD /* LaunchScreen.storyboard */; };
+		DEC3C86E20D5088400FCBFBD /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C86D20D5088400FCBFBD /* UIColorExtensions.swift */; };
+		DEC3C87020D508BF00FCBFBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C86F20D508BF00FCBFBD /* Constants.swift */; };
+		DEC3C87D20D508F600FCBFBD /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87320D508F500FCBFBD /* OpenSans-Light.ttf */; };
+		DEC3C87E20D508F600FCBFBD /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87420D508F500FCBFBD /* OpenSans-SemiboldItalic.ttf */; };
+		DEC3C87F20D508F600FCBFBD /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87520D508F500FCBFBD /* OpenSans-ExtraBold.ttf */; };
+		DEC3C88020D508F600FCBFBD /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87620D508F500FCBFBD /* OpenSans-Bold.ttf */; };
+		DEC3C88120D508F600FCBFBD /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87720D508F500FCBFBD /* OpenSans-Italic.ttf */; };
+		DEC3C88220D508F600FCBFBD /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87820D508F500FCBFBD /* OpenSans-BoldItalic.ttf */; };
+		DEC3C88320D508F600FCBFBD /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87920D508F600FCBFBD /* OpenSans-LightItalic.ttf */; };
+		DEC3C88420D508F600FCBFBD /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87A20D508F600FCBFBD /* OpenSans-Semibold.ttf */; };
+		DEC3C88520D508F600FCBFBD /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87B20D508F600FCBFBD /* OpenSans-ExtraBoldItalic.ttf */; };
+		DEC3C88620D508F600FCBFBD /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C87C20D508F600FCBFBD /* OpenSans-Regular.ttf */; };
+		DEC3C88820D5093300FCBFBD /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C88720D5093300FCBFBD /* UIFontExtensions.swift */; };
+		DEC3C88D20D5126B00FCBFBD /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C88C20D5126B00FCBFBD /* RoundedView.swift */; };
+		DEC3C88F20D51A3C00FCBFBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEC3C88E20D51A3C00FCBFBD /* GoogleService-Info.plist */; };
+		DEC3C89420D51C7800FCBFBD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C89320D51C7800FCBFBD /* AuthService.swift */; };
+		DEC3C89620D51C8500FCBFBD /* FirebaseUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C89520D51C8500FCBFBD /* FirebaseUserService.swift */; };
+		DEC3C89820D51C8F00FCBFBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C89720D51C8F00FCBFBD /* User.swift */; };
+		DEC3C89F20D51DA500FCBFBD /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C89B20D51DA500FCBFBD /* CreateAccountView.swift */; };
+		DEC3C8A020D51DA500FCBFBD /* CreateAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C89C20D51DA500FCBFBD /* CreateAccountPresenter.swift */; };
+		DEC3C8A120D51DA500FCBFBD /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C89D20D51DA500FCBFBD /* LoginPresenter.swift */; };
+		DEC3C8A220D51DA500FCBFBD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C89E20D51DA500FCBFBD /* LoginView.swift */; };
+		DEC3C8A520D51DBD00FCBFBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8A320D51DBD00FCBFBD /* LoginViewController.swift */; };
+		DEC3C8A620D51DBD00FCBFBD /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8A420D51DBD00FCBFBD /* CreateAccountViewController.swift */; };
+		DEC3C8A820D5226800FCBFBD /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8A720D5226800FCBFBD /* CategoriesView.swift */; };
+		DEC3C8AA20D5227200FCBFBD /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8A920D5227200FCBFBD /* CategoriesPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F580A904D46AE410F7F6CA2 /* Pods-FSEPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSEPractice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FSEPractice/Pods-FSEPractice.debug.xcconfig"; sourceTree = "<group>"; };
+		46D4FF657BD8E82D34BEBCC4 /* Pods_FSEPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSEPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE90C9384D4D180C8C33318 /* Pods-FSEPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSEPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-FSEPractice/Pods-FSEPractice.release.xcconfig"; sourceTree = "<group>"; };
 		DEC3C85720D5076500FCBFBD /* FSEPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSEPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC3C85A20D5076500FCBFBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DEC3C85C20D5076500FCBFBD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DEC3C85C20D5076500FCBFBD /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		DEC3C85F20D5076500FCBFBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEC3C86120D5076800FCBFBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEC3C86420D5076800FCBFBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEC3C86620D5076800FCBFBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEC3C86D20D5088400FCBFBD /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		DEC3C86F20D508BF00FCBFBD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DEC3C87320D508F500FCBFBD /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		DEC3C87420D508F500FCBFBD /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		DEC3C87520D508F500FCBFBD /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		DEC3C87620D508F500FCBFBD /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		DEC3C87720D508F500FCBFBD /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		DEC3C87820D508F500FCBFBD /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		DEC3C87920D508F600FCBFBD /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		DEC3C87A20D508F600FCBFBD /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		DEC3C87B20D508F600FCBFBD /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		DEC3C87C20D508F600FCBFBD /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		DEC3C88720D5093300FCBFBD /* UIFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
+		DEC3C88C20D5126B00FCBFBD /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		DEC3C88E20D51A3C00FCBFBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DEC3C89320D51C7800FCBFBD /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DEC3C89520D51C8500FCBFBD /* FirebaseUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUserService.swift; sourceTree = "<group>"; };
+		DEC3C89720D51C8F00FCBFBD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DEC3C89B20D51DA500FCBFBD /* CreateAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		DEC3C89C20D51DA500FCBFBD /* CreateAccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPresenter.swift; sourceTree = "<group>"; };
+		DEC3C89D20D51DA500FCBFBD /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		DEC3C89E20D51DA500FCBFBD /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DEC3C8A320D51DBD00FCBFBD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DEC3C8A420D51DBD00FCBFBD /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		DEC3C8A720D5226800FCBFBD /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		DEC3C8A920D5227200FCBFBD /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +85,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09243796F329F46ED4746C38 /* Pods_FSEPractice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BAE3947100FFCE0669CF869D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3F580A904D46AE410F7F6CA2 /* Pods-FSEPractice.debug.xcconfig */,
+				8CE90C9384D4D180C8C33318 /* Pods-FSEPractice.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D75E90CD80ED2144BEDE7CC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46D4FF657BD8E82D34BEBCC4 /* Pods_FSEPractice.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DEC3C84E20D5076500FCBFBD = {
 			isa = PBXGroup;
 			children = (
 				DEC3C85920D5076500FCBFBD /* FSEPractice */,
 				DEC3C85820D5076500FCBFBD /* Products */,
+				BAE3947100FFCE0669CF869D /* Pods */,
+				D75E90CD80ED2144BEDE7CC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +130,112 @@
 		DEC3C85920D5076500FCBFBD /* FSEPractice */ = {
 			isa = PBXGroup;
 			children = (
+				DEC3C89020D51C5900FCBFBD /* Networking */,
+				DEC3C86C20D5079C00FCBFBD /* Utils */,
+				DEC3C88B20D5095C00FCBFBD /* Model */,
+				DEC3C89920D51D9300FCBFBD /* Platform */,
+				DEC3C89A20D51D9800FCBFBD /* Presentation */,
+				DEC3C87120D508C500FCBFBD /* Resources */,
 				DEC3C85A20D5076500FCBFBD /* AppDelegate.swift */,
-				DEC3C85C20D5076500FCBFBD /* ViewController.swift */,
 				DEC3C85E20D5076500FCBFBD /* Main.storyboard */,
 				DEC3C86120D5076800FCBFBD /* Assets.xcassets */,
 				DEC3C86320D5076800FCBFBD /* LaunchScreen.storyboard */,
 				DEC3C86620D5076800FCBFBD /* Info.plist */,
+				DEC3C88E20D51A3C00FCBFBD /* GoogleService-Info.plist */,
 			);
 			path = FSEPractice;
+			sourceTree = "<group>";
+		};
+		DEC3C86C20D5079C00FCBFBD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C86F20D508BF00FCBFBD /* Constants.swift */,
+				DEC3C86D20D5088400FCBFBD /* UIColorExtensions.swift */,
+				DEC3C88720D5093300FCBFBD /* UIFontExtensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DEC3C87120D508C500FCBFBD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C87220D508E100FCBFBD /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DEC3C87220D508E100FCBFBD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C87620D508F500FCBFBD /* OpenSans-Bold.ttf */,
+				DEC3C87820D508F500FCBFBD /* OpenSans-BoldItalic.ttf */,
+				DEC3C87520D508F500FCBFBD /* OpenSans-ExtraBold.ttf */,
+				DEC3C87B20D508F600FCBFBD /* OpenSans-ExtraBoldItalic.ttf */,
+				DEC3C87720D508F500FCBFBD /* OpenSans-Italic.ttf */,
+				DEC3C87320D508F500FCBFBD /* OpenSans-Light.ttf */,
+				DEC3C87920D508F600FCBFBD /* OpenSans-LightItalic.ttf */,
+				DEC3C87C20D508F600FCBFBD /* OpenSans-Regular.ttf */,
+				DEC3C87A20D508F600FCBFBD /* OpenSans-Semibold.ttf */,
+				DEC3C87420D508F500FCBFBD /* OpenSans-SemiboldItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DEC3C88B20D5095C00FCBFBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C89720D51C8F00FCBFBD /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEC3C89020D51C5900FCBFBD /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C89120D51C5E00FCBFBD /* Firebase */,
+				DEC3C89220D51C6400FCBFBD /* Services */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DEC3C89120D51C5E00FCBFBD /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C89520D51C8500FCBFBD /* FirebaseUserService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		DEC3C89220D51C6400FCBFBD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C89320D51C7800FCBFBD /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DEC3C89920D51D9300FCBFBD /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C8A420D51DBD00FCBFBD /* CreateAccountViewController.swift */,
+				DEC3C8A320D51DBD00FCBFBD /* LoginViewController.swift */,
+				DEC3C85C20D5076500FCBFBD /* CategoriesViewController.swift */,
+				DEC3C88C20D5126B00FCBFBD /* RoundedView.swift */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		DEC3C89A20D51D9800FCBFBD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3C89C20D51DA500FCBFBD /* CreateAccountPresenter.swift */,
+				DEC3C89B20D51DA500FCBFBD /* CreateAccountView.swift */,
+				DEC3C89D20D51DA500FCBFBD /* LoginPresenter.swift */,
+				DEC3C89E20D51DA500FCBFBD /* LoginView.swift */,
+				DEC3C8A720D5226800FCBFBD /* CategoriesView.swift */,
+				DEC3C8A920D5227200FCBFBD /* CategoriesPresenter.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEC3C86920D5076800FCBFBD /* Build configuration list for PBXNativeTarget "FSEPractice" */;
 			buildPhases = (
+				4427567EB3A948E70957E317 /* [CP] Check Pods Manifest.lock */,
 				DEC3C85320D5076500FCBFBD /* Sources */,
 				DEC3C85420D5076500FCBFBD /* Frameworks */,
 				DEC3C85520D5076500FCBFBD /* Resources */,
+				2757526245C3CF5C4EE68C01 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,20 +299,91 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEC3C86520D5076800FCBFBD /* LaunchScreen.storyboard in Resources */,
+				DEC3C88F20D51A3C00FCBFBD /* GoogleService-Info.plist in Resources */,
+				DEC3C88420D508F600FCBFBD /* OpenSans-Semibold.ttf in Resources */,
+				DEC3C88120D508F600FCBFBD /* OpenSans-Italic.ttf in Resources */,
+				DEC3C88020D508F600FCBFBD /* OpenSans-Bold.ttf in Resources */,
+				DEC3C87E20D508F600FCBFBD /* OpenSans-SemiboldItalic.ttf in Resources */,
+				DEC3C88320D508F600FCBFBD /* OpenSans-LightItalic.ttf in Resources */,
 				DEC3C86220D5076800FCBFBD /* Assets.xcassets in Resources */,
+				DEC3C88520D508F600FCBFBD /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				DEC3C87D20D508F600FCBFBD /* OpenSans-Light.ttf in Resources */,
+				DEC3C88220D508F600FCBFBD /* OpenSans-BoldItalic.ttf in Resources */,
 				DEC3C86020D5076500FCBFBD /* Main.storyboard in Resources */,
+				DEC3C88620D508F600FCBFBD /* OpenSans-Regular.ttf in Resources */,
+				DEC3C87F20D508F600FCBFBD /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2757526245C3CF5C4EE68C01 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FSEPractice/Pods-FSEPractice-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FSEPractice/Pods-FSEPractice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4427567EB3A948E70957E317 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FSEPractice-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DEC3C85320D5076500FCBFBD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEC3C85D20D5076500FCBFBD /* ViewController.swift in Sources */,
+				DEC3C8A820D5226800FCBFBD /* CategoriesView.swift in Sources */,
+				DEC3C8A620D51DBD00FCBFBD /* CreateAccountViewController.swift in Sources */,
+				DEC3C8A520D51DBD00FCBFBD /* LoginViewController.swift in Sources */,
+				DEC3C8A120D51DA500FCBFBD /* LoginPresenter.swift in Sources */,
+				DEC3C86E20D5088400FCBFBD /* UIColorExtensions.swift in Sources */,
+				DEC3C85D20D5076500FCBFBD /* CategoriesViewController.swift in Sources */,
+				DEC3C88D20D5126B00FCBFBD /* RoundedView.swift in Sources */,
+				DEC3C88820D5093300FCBFBD /* UIFontExtensions.swift in Sources */,
+				DEC3C89F20D51DA500FCBFBD /* CreateAccountView.swift in Sources */,
 				DEC3C85B20D5076500FCBFBD /* AppDelegate.swift in Sources */,
+				DEC3C89820D51C8F00FCBFBD /* User.swift in Sources */,
+				DEC3C8AA20D5227200FCBFBD /* CategoriesPresenter.swift in Sources */,
+				DEC3C8A020D51DA500FCBFBD /* CreateAccountPresenter.swift in Sources */,
+				DEC3C89620D51C8500FCBFBD /* FirebaseUserService.swift in Sources */,
+				DEC3C8A220D51DA500FCBFBD /* LoginView.swift in Sources */,
+				DEC3C87020D508BF00FCBFBD /* Constants.swift in Sources */,
+				DEC3C89420D51C7800FCBFBD /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +525,7 @@
 		};
 		DEC3C86A20D5076800FCBFBD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F580A904D46AE410F7F6CA2 /* Pods-FSEPractice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +544,7 @@
 		};
 		DEC3C86B20D5076800FCBFBD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CE90C9384D4D180C8C33318 /* Pods-FSEPractice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

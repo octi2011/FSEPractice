@@ -13,7 +13,6 @@ private struct UserKey {
     static let email = "email"
     static let username = "username"
     static let pictureUrl = "pictureUrl"
-    static let phone = "phone"
 }
 
 class FirebaseUserService {
@@ -54,7 +53,7 @@ class FirebaseUserService {
         }, withCancel: nil)
     }
     
-    static func registerToFirebase(username: String, email: String, password: String, phone: String, completion: @escaping CompletionHandler) {
+    static func registerToFirebase(username: String, email: String, password: String, completion: @escaping CompletionHandler) {
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             
@@ -69,7 +68,7 @@ class FirebaseUserService {
                 return
             }
             
-            let values = [UserKey.username: username, UserKey.email: email, UserKey.phone: phone, UserKey.pictureUrl: FirebaseStoragePath.defaultProfilePath]
+            let values = [UserKey.username: username, UserKey.email: email, UserKey.pictureUrl: FirebaseStoragePath.defaultProfilePath]
             
             registerUserIntoDatabase(withUID: uid, values: values as [String : AnyObject], completion: { (success) in
                 if success {
