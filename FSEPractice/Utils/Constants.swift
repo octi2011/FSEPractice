@@ -28,4 +28,38 @@ struct FirebaseStoragePath {
     static let defaultProfilePath = "https://firebasestorage.googleapis.com/v0/b/fsepractice.appspot.com/o/profile-default.jpg?alt=media&token=c8bee6fe-49c5-402b-ac0b-69e51ee3b5cd"
 }
 
+struct CategoriesKey {
+    static let name = "name"
+    static let pictureName = "pictureName"
+}
+
+struct StaticData {
+    static let categories = [
+        [
+        CategoriesKey.name: "Management",
+        CategoriesKey.pictureName: "fse1"
+        ],
+        [
+        CategoriesKey.name: "Marketing",
+        CategoriesKey.pictureName: "fse2"
+        ],
+        [
+        CategoriesKey.name: "Finante",
+        CategoriesKey.pictureName: "fse3"
+        ],
+        [
+        CategoriesKey.name: "Economie",
+        CategoriesKey.pictureName: "fse4"
+        ],
+        [
+        CategoriesKey.name: "Contabilitate",
+        CategoriesKey.pictureName: "fse5"
+        ],
+        [
+        CategoriesKey.name: "Afaceri",
+        CategoriesKey.pictureName: "fse6"
+        ]
+    ]
+}
+
 

@@ -39,6 +39,8 @@
 		DEC3C8A620D51DBD00FCBFBD /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8A420D51DBD00FCBFBD /* CreateAccountViewController.swift */; };
 		DEC3C8A820D5226800FCBFBD /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8A720D5226800FCBFBD /* CategoriesView.swift */; };
 		DEC3C8AA20D5227200FCBFBD /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8A920D5227200FCBFBD /* CategoriesPresenter.swift */; };
+		DEC3C8AC20D52F3100FCBFBD /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8AB20D52F3100FCBFBD /* CategoryCell.swift */; };
+		DEC3C8AE20D5305900FCBFBD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8AD20D5305900FCBFBD /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		DEC3C8A420D51DBD00FCBFBD /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		DEC3C8A720D5226800FCBFBD /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		DEC3C8A920D5227200FCBFBD /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
+		DEC3C8AB20D52F3100FCBFBD /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		DEC3C8AD20D5305900FCBFBD /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				DEC3C89720D51C8F00FCBFBD /* User.swift */,
+				DEC3C8AD20D5305900FCBFBD /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				DEC3C8A320D51DBD00FCBFBD /* LoginViewController.swift */,
 				DEC3C85C20D5076500FCBFBD /* CategoriesViewController.swift */,
 				DEC3C88C20D5126B00FCBFBD /* RoundedView.swift */,
+				DEC3C8AB20D52F3100FCBFBD /* CategoryCell.swift */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -369,9 +375,11 @@
 			files = (
 				DEC3C8A820D5226800FCBFBD /* CategoriesView.swift in Sources */,
 				DEC3C8A620D51DBD00FCBFBD /* CreateAccountViewController.swift in Sources */,
+				DEC3C8AE20D5305900FCBFBD /* Category.swift in Sources */,
 				DEC3C8A520D51DBD00FCBFBD /* LoginViewController.swift in Sources */,
 				DEC3C8A120D51DA500FCBFBD /* LoginPresenter.swift in Sources */,
 				DEC3C86E20D5088400FCBFBD /* UIColorExtensions.swift in Sources */,
+				DEC3C8AC20D52F3100FCBFBD /* CategoryCell.swift in Sources */,
 				DEC3C85D20D5076500FCBFBD /* CategoriesViewController.swift in Sources */,
 				DEC3C88D20D5126B00FCBFBD /* RoundedView.swift in Sources */,
 				DEC3C88820D5093300FCBFBD /* UIFontExtensions.swift in Sources */,

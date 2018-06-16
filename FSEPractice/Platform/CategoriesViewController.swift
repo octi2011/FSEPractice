@@ -11,6 +11,8 @@ import Firebase
 
 class CategoriesViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     lazy var presenter: CategoriesPresenter = {
         return CategoriesPresenter(view: self)
     }()
@@ -34,6 +36,26 @@ class CategoriesViewController: UIViewController {
             print(error)
         }
         
+    }
+}
+
+extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.reuseId()) as? CategoryCell else { return UITableViewCell() }
+        
+        let dictionary = StaticData.categories[indexPath.row]
+        
+        guard let name = dictionary[CategoriesKey.name], let pictureName = dictionary[CategoriesKey.pictureName] else { return UITableViewCell() }
+        
+        let category = Category(name: name, pictureName: pictureName)
+        
+        cell.configureCell(category: category)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return StaticData.categories.count
     }
 }
 
