@@ -14,6 +14,10 @@ struct StoryboardID {
     static let createAccountScreen = "createAccount"
     
     static let categoriesScreen = "categories"
+    
+    static let detailsScreen = "details"
+    
+    static let matchScreen = "match"
 }
 
 struct UserDefaultsKey {
@@ -22,10 +26,11 @@ struct UserDefaultsKey {
 
 struct FirebaseChild {
     static let users = "users"
+    static let questions = "questions"
 }
 
 struct FirebaseStoragePath {
-    static let defaultProfilePath = "https://firebasestorage.googleapis.com/v0/b/fsepractice.appspot.com/o/profile-default.jpg?alt=media&token=c8bee6fe-49c5-402b-ac0b-69e51ee3b5cd"
+    static let defaultProfilePath = "https://firebasestorage.googleapis.com/v0/b/fsepractice.appspot.com/o/image%403x.png?alt=media&token=40ee8fd5-ff39-4bd7-90ca-d309cabf49cb"
 }
 
 struct CategoriesKey {

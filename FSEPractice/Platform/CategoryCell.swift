@@ -12,6 +12,8 @@ class CategoryCell: UITableViewCell {
 
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var titleView: RoundedView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +26,23 @@ class CategoryCell: UITableViewCell {
     
     static func reuseId() -> String {
         return "categoryCell"
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        let color = titleView.backgroundColor
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            titleView.backgroundColor = color
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        let color = titleView.backgroundColor
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            titleView.backgroundColor = color
+        }
     }
 }

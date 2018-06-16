@@ -57,6 +57,16 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return StaticData.categories.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dictionary = StaticData.categories[indexPath.row]
+        
+        guard let name = dictionary[CategoriesKey.name], let pictureName = dictionary[CategoriesKey.pictureName] else { return }
+        
+        let category = Category(name: name, pictureName: pictureName)
+        
+        navigateToDetailsScreen(category: category)
+    }
 }
 
 extension CategoriesViewController: CategoriesView {
@@ -64,6 +74,12 @@ extension CategoriesViewController: CategoriesView {
         let loginViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardID.loginScreen) as! LoginViewController
         loginViewController.navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    func navigateToDetailsScreen(category: Category) {
+        let detailsViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardID.detailsScreen) as! CategoryDetailsViewController
+        detailsViewController.category = category
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 
