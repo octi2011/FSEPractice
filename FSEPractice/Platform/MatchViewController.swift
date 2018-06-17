@@ -97,6 +97,26 @@ class MatchViewController: UIViewController {
         }
     }
     
+    private func addToOverallScore() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.database().reference().child(FirebaseChild.users).child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                if let user = User(dictionary: dictionary) {
+                    if var points = user.points {
+                        points += self.player1Points
+                        
+                        let ref = Database.database().reference().child(FirebaseChild.users).child(uid)
+                        let values = ["points": points]
+                        ref.updateChildValues(values)
+                    }
+                }
+            }
+        }, withCancel: nil)
+    }
+    
     private func getFirstPlayer(completion: @escaping CompletionHandler) {
         if let room = roomId {
             guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -147,9 +167,11 @@ class MatchViewController: UIViewController {
                 if player1Points > player2Points {
                     let alert = UIAlertController(title: "Bravo!", message: "Ai castigat!", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                        self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popToViewController((self.navigationController?.viewControllers.first)!, animated: true)
+                        self.addToOverallScore()
                         if let room = self.roomId {
                             let roomRef = Database.database().reference().child(FirebaseChild.rooms).child(room)
+                            
                             roomRef.removeValue()
                         }
                     }
@@ -158,7 +180,7 @@ class MatchViewController: UIViewController {
                 } else if player1Points < player2Points {
                     let alert = UIAlertController(title: "Ne pare rau!", message: "Ai pierdut!", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                        self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popToViewController((self.navigationController?.viewControllers.first)!, animated: true)
                         if let room = self.roomId {
                             let roomRef = Database.database().reference().child(FirebaseChild.rooms).child(room)
                             roomRef.removeValue()
@@ -170,7 +192,7 @@ class MatchViewController: UIViewController {
                 } else {
                     let alert = UIAlertController(title: "Egalitate!", message: "Ai intalnit un oponent pe masura ta!", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                        self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popToViewController((self.navigationController?.viewControllers.first)!, animated: true)
                         if let room = self.roomId {
                             let roomRef = Database.database().reference().child(FirebaseChild.rooms).child(room)
                             roomRef.removeValue()
