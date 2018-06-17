@@ -27,6 +27,8 @@ struct UserDefaultsKey {
 struct FirebaseChild {
     static let users = "users"
     static let questions = "questions"
+    static let rooms = "rooms"
+    static let queue = "queue"
 }
 
 struct FirebaseStoragePath {

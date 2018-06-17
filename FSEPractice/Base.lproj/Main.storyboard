@@ -188,25 +188,36 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="octavian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nV0-lY-g3z">
-                                                    <rect key="frame" x="61" y="21" width="82.5" height="28"/>
+                                                    <rect key="frame" x="61" y="8" width="82.5" height="28"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
                                                     <color key="textColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Puncte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nCd-nt-3uT">
+                                                    <rect key="frame" x="61" y="37" width="59" height="15"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="11"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="nV0-lY-g3z" firstAttribute="top" secondItem="JHv-iV-7kc" secondAttribute="top" constant="8" id="2Q2-ZM-sY7"/>
                                                 <constraint firstItem="laC-Ga-G7X" firstAttribute="leading" secondItem="JHv-iV-7kc" secondAttribute="leadingMargin" id="35d-Mx-7vX"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nCd-nt-3uT" secondAttribute="trailing" constant="20" symbolic="YES" id="656-kD-wB0"/>
                                                 <constraint firstItem="hUl-7Q-O7B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nV0-lY-g3z" secondAttribute="trailing" constant="8" id="E5h-HU-smW"/>
+                                                <constraint firstAttribute="bottom" secondItem="nCd-nt-3uT" secondAttribute="bottom" constant="17.5" id="FYC-M0-f0R"/>
                                                 <constraint firstAttribute="trailing" secondItem="hUl-7Q-O7B" secondAttribute="trailing" constant="15" id="RRm-00-dOu"/>
                                                 <constraint firstItem="laC-Ga-G7X" firstAttribute="centerY" secondItem="JHv-iV-7kc" secondAttribute="centerY" id="XU7-m5-2jk"/>
-                                                <constraint firstItem="nV0-lY-g3z" firstAttribute="centerY" secondItem="laC-Ga-G7X" secondAttribute="centerY" id="me1-xY-wDD"/>
+                                                <constraint firstItem="nCd-nt-3uT" firstAttribute="leading" secondItem="laC-Ga-G7X" secondAttribute="trailing" constant="20" id="fze-X6-zHy"/>
+                                                <constraint firstItem="hUl-7Q-O7B" firstAttribute="centerY" secondItem="laC-Ga-G7X" secondAttribute="centerY" id="lsa-nt-gVq"/>
                                                 <constraint firstItem="nV0-lY-g3z" firstAttribute="leading" secondItem="laC-Ga-G7X" secondAttribute="trailing" constant="20" id="sVq-6u-0IK"/>
-                                                <constraint firstItem="hUl-7Q-O7B" firstAttribute="centerY" secondItem="nV0-lY-g3z" secondAttribute="centerY" id="tDw-7N-tr0"/>
+                                                <constraint firstItem="nCd-nt-3uT" firstAttribute="top" secondItem="nV0-lY-g3z" secondAttribute="bottom" constant="1" id="y4U-PL-JzN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="playerImageView" destination="hUl-7Q-O7B" id="mpA-jM-esU"/>
                                             <outlet property="playerNameLabel" destination="nV0-lY-g3z" id="NLU-Bl-7AA"/>
+                                            <outlet property="pointsLabel" destination="nCd-nt-3uT" id="7FE-hc-lXd"/>
                                             <outlet property="rankLabel" destination="laC-Ga-G7X" id="QVJ-0f-Nhl"/>
                                         </connections>
                                     </tableViewCell>

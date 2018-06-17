@@ -13,6 +13,7 @@ private struct UserKey {
     static let email = "email"
     static let username = "username"
     static let pictureUrl = "pictureUrl"
+    static let points = "points"
 }
 
 class FirebaseUserService {
@@ -68,7 +69,7 @@ class FirebaseUserService {
                 return
             }
             
-            let values = [UserKey.username: username, UserKey.email: email, UserKey.pictureUrl: FirebaseStoragePath.defaultProfilePath]
+            let values = [UserKey.username: username, UserKey.email: email, UserKey.pictureUrl: FirebaseStoragePath.defaultProfilePath, UserKey.points: 0] as [String : AnyObject]
             
             registerUserIntoDatabase(withUID: uid, values: values as [String : AnyObject], completion: { (success) in
                 if success {

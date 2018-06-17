@@ -9,6 +9,14 @@
 import UIKit
 import Firebase
 
+private struct QuestionKey {
+    static let question = "question"
+    static let firstAnswer = "0"
+    static let secondAnswer = "1"
+    static let thirdAnswer = "2"
+    static let answer = "answer"
+}
+
 class CategoryDetailsViewController: UIViewController {
     
     var users = [User]()
@@ -28,6 +36,10 @@ class CategoryDetailsViewController: UIViewController {
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     
+    
+    var questions = [Question]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,21 +54,6 @@ class CategoryDetailsViewController: UIViewController {
     }
     
     @IBAction func onStatsTapped(_ sender: Any) {
-//        let ref = Database.database().reference().child(FirebaseChild.questions)
-//        let childRef = ref.childByAutoId()
-//        let values = [
-//            "question": "Managementul integrat al marketingului este:",
-//            "0": "un concept subliniat de mai multi autori; ",
-//            "1": "procesul complex decizional, amplu si atotcuprinzator bazat pe cunostinte si maiestrie prin care se concep si implementeaza unitar procedurile decizionale adoptate de substructurile companiei (firmei) in scopul identificarii pietelor tinta, atragerii si mentinerii clientilor satisfacuti de produsele/serviciile oferite in relatii reciproc profitabile;",
-//            "2": "un proces deosebit de complex si complicat pe care se bazeaza economia de piata globalizata.",
-//            "answer": "1"
-//        ]
-//        childRef.updateChildValues(values) { (error, ref) in
-//            if error != nil {
-//                print(error as Any)
-//                return
-//            }
-//        }
     }
     
     private func fetchUsers() {
@@ -68,6 +65,10 @@ class CategoryDetailsViewController: UIViewController {
                     user.id = snapshot.key
                     self.users.append(user)
                 }
+                
+                self.users.sort(by: { (u1, u2) -> Bool in
+                    return u1.points! > u2.points!
+                })
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -86,7 +87,7 @@ class CategoryDetailsViewController: UIViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let roomRef = Database.database().reference().child("queue")
+        let roomRef = Database.database().reference().child(FirebaseChild.queue)
         let childRef = roomRef.child(uid)
         let values = ["userId": uid] as [String: AnyObject]
         
@@ -99,10 +100,11 @@ class CategoryDetailsViewController: UIViewController {
         }
         
         roomRef.observe(.value, with: { (snapshot) in
-            print(snapshot)
             if snapshot.childrenCount == 2 {
+                
                 let matchViewController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardID.matchScreen) as! MatchViewController
                 matchViewController.navigationItem.setHidesBackButton(true, animated: true)
+                
                 self.navigationController?.pushViewController(matchViewController, animated: true)
                 
                 childRef.removeValue { (error, ref) in
@@ -111,10 +113,58 @@ class CategoryDetailsViewController: UIViewController {
                         return
                     }
                 }
+                
+                let ref = Database.database().reference().child(FirebaseChild.rooms)
+                
+                if let dict = snapshot.children.allObjects.first as? DataSnapshot {
+                    if let item = dict.value as? [String: AnyObject] {
+                        let refChildRef = ref.child(item["userId"] as! String)
+                        
+                        if let room = item["userId"] as? String {
+                            matchViewController.roomId = room
+                            print(matchViewController.roomId!)
+                        }
+                        
+                        let value = [uid: uid]
+                        refChildRef.updateChildValues(value, withCompletionBlock: { (error, ref) in
+                            if error != nil {
+                                print(error as Any)
+                                return
+                            }
+                        })
+                        
+                        self.getQuestions { (success) in
+                            if success {
+                                self.questions.shuffle()
+                                let questionsToSend = self.questions.prefix(6)
+                                let questionsArray = Array(questionsToSend)
+                                var dictArray = [[String: AnyObject]]()
+                                for item in questionsArray {
+                                    var qDict = [String: AnyObject]()
+                                    qDict[QuestionKey.question] = item.question as AnyObject
+                                    qDict[QuestionKey.firstAnswer] = item.firstAnswer as AnyObject
+                                    qDict[QuestionKey.secondAnswer] = item.secondAnswer as AnyObject
+                                    qDict[QuestionKey.thirdAnswer] = item.thirdAnswer as AnyObject
+                                    qDict[QuestionKey.answer] = item.answer as AnyObject
+                                    dictArray.append(qDict)
+                                }
+                                let qValues = ["questions": dictArray]
+                                
+                                refChildRef.updateChildValues(qValues, withCompletionBlock: { (error, ref) in
+                                    if error != nil {
+                                        print(error as Any)
+                                        return
+                                    }
+                                })
+                            }
+                        }
+                    }
+                    
+                }
             }
         }, withCancel: nil)
-        
     }
+    
     
     @objc func updateTimer() {
         timeInt -= 1
@@ -134,7 +184,7 @@ class CategoryDetailsViewController: UIViewController {
             progressImageView.image = UIImage(named: "progress\(String(describing: timeInt))")
             
             guard let uid = Auth.auth().currentUser?.uid else { return }
-            let roomRef = Database.database().reference().child("queue")
+            let roomRef = Database.database().reference().child(FirebaseChild.queue)
             let childRef = roomRef.child(uid)
             childRef.removeValue { (error, ref) in
                 if error != nil {
@@ -143,6 +193,23 @@ class CategoryDetailsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    
+    private func getQuestions(completion: @escaping CompletionHandler) {
+        let ref = Database.database().reference().child(FirebaseChild.questions)
+        ref.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                if let question = Question(dictionary: dictionary) {
+                    self.questions.append(question)
+                }
+                completion(true)
+            } else {
+                completion(false)
+                return
+            }
+        }, withCancel: nil)
     }
 }
 
@@ -161,5 +228,21 @@ extension CategoryDetailsViewController: UITableViewDataSource, UITableViewDeleg
         cell.configureCell(user: user)
         
         return cell
+    }
+}
+
+
+extension MutableCollection {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+        
+        for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            // Change `Int` in the next line to `IndexDistance` in < Swift 4.1
+            let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            let i = index(firstUnshuffled, offsetBy: d)
+            swapAt(firstUnshuffled, i)
+        }
     }
 }

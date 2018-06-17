@@ -12,7 +12,8 @@ import Firebase
 class MatchViewController: UIViewController {
     
     var questions = [Question]()
-
+    var roomId: String?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
@@ -25,7 +26,6 @@ class MatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -34,6 +34,7 @@ class MatchViewController: UIViewController {
         
         getQuestions { (success) in
             if success {
+                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -43,19 +44,21 @@ class MatchViewController: UIViewController {
     }
     
     private func getQuestions(completion: @escaping CompletionHandler) {
-        let ref = Database.database().reference().child(FirebaseChild.questions)
-        ref.observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                if let question = Question(dictionary: dictionary) {
-                    self.questions.append(question)
-                    print(question.question!)
+        if let room = roomId {
+            let ref = Database.database().reference().child(FirebaseChild.rooms).child(room).child(FirebaseChild.questions)
+            ref.observe(.childAdded, with: { (snapshot) in
+                print(snapshot)
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    if let question = Question(dictionary: dictionary) {
+                        self.questions.append(question)
+                    }
+                    completion(true)
+                } else {
+                    completion(false)
+                    return
                 }
-                completion(true)
-            } else {
-                completion(false)
-                return
-            }
-        }, withCancel: nil)
+            }, withCancel: nil)
+        }
     }
 }
 
@@ -74,3 +77,4 @@ extension MatchViewController: UITableViewDataSource, UITableViewDelegate {
         return 3
     }
 }
+
