@@ -349,14 +349,14 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Octavian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aSK-n8-JM9">
-                                <rect key="frame" x="78" y="10" width="86" height="28"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <rect key="frame" x="78" y="10" width="60" height="19.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loreta" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qxL-Zu-zwA">
-                                <rect key="frame" x="234" y="10" width="62.5" height="28"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <rect key="frame" x="252.5" y="10" width="44" height="19.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -386,6 +386,19 @@
                                 <color key="textColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="match10" translatesAutoresizingMaskIntoConstraints="NO" id="SvF-kM-ymi">
+                                <rect key="frame" x="157" y="5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="GHc-q9-TOd"/>
+                                    <constraint firstAttribute="height" constant="60" id="hsR-5f-gc1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM4-fO-Xg2">
+                                <rect key="frame" x="176" y="22" width="23" height="28"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -395,16 +408,20 @@
                             <constraint firstItem="e6i-gD-0fT" firstAttribute="width" secondItem="Gfl-qe-efX" secondAttribute="width" multiplier="0.9" id="5gn-Hs-bnw"/>
                             <constraint firstItem="1e6-8W-f9v" firstAttribute="bottom" secondItem="9ki-Od-IHi" secondAttribute="bottom" id="6Xx-7Q-j6p"/>
                             <constraint firstItem="ySx-4x-v9d" firstAttribute="leading" secondItem="PIB-Q8-uvt" secondAttribute="leading" id="7Zt-2z-Uui"/>
+                            <constraint firstItem="gM4-fO-Xg2" firstAttribute="centerX" secondItem="Gfl-qe-efX" secondAttribute="centerX" id="8sV-5j-bjk"/>
                             <constraint firstItem="sjx-Nf-Oqa" firstAttribute="bottom" secondItem="pD0-zu-RKO" secondAttribute="bottom" id="9cm-Q6-Gfb"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aSK-n8-JM9" secondAttribute="trailing" constant="20" symbolic="YES" id="BCg-Zv-hJy"/>
                             <constraint firstItem="qxL-Zu-zwA" firstAttribute="top" secondItem="pD0-zu-RKO" secondAttribute="top" id="CQ0-Ip-Fid"/>
                             <constraint firstItem="1e6-8W-f9v" firstAttribute="leading" secondItem="9ki-Od-IHi" secondAttribute="trailing" constant="8" id="Dkz-JJ-FtK"/>
                             <constraint firstItem="ySx-4x-v9d" firstAttribute="bottom" secondItem="PIB-Q8-uvt" secondAttribute="bottom" id="ETx-Yg-cQp"/>
                             <constraint firstItem="pD0-zu-RKO" firstAttribute="leading" secondItem="qxL-Zu-zwA" secondAttribute="trailing" constant="8" id="GqE-pA-LGZ"/>
+                            <constraint firstItem="SvF-kM-ymi" firstAttribute="centerX" secondItem="Gfl-qe-efX" secondAttribute="centerX" id="LAL-8P-o0i"/>
                             <constraint firstItem="ySx-4x-v9d" firstAttribute="trailing" secondItem="PIB-Q8-uvt" secondAttribute="trailing" id="Nuu-Hk-fT7"/>
                             <constraint firstItem="9ki-Od-IHi" firstAttribute="leading" secondItem="PIB-Q8-uvt" secondAttribute="leading" constant="20" id="O1a-Pg-wOS"/>
+                            <constraint firstItem="SvF-kM-ymi" firstAttribute="top" secondItem="PIB-Q8-uvt" secondAttribute="top" constant="5" id="OIy-49-PzN"/>
                             <constraint firstItem="aSK-n8-JM9" firstAttribute="leading" secondItem="9ki-Od-IHi" secondAttribute="trailing" constant="8" id="Z90-OD-Jg8"/>
                             <constraint firstItem="qxL-Zu-zwA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gfl-qe-efX" secondAttribute="leading" constant="20" symbolic="YES" id="ckB-91-Rrf"/>
+                            <constraint firstItem="gM4-fO-Xg2" firstAttribute="top" secondItem="PIB-Q8-uvt" secondAttribute="top" constant="22" id="d28-IN-lJb"/>
                             <constraint firstItem="pD0-zu-RKO" firstAttribute="leading" secondItem="sjx-Nf-Oqa" secondAttribute="trailing" constant="8" id="dfL-LL-3gC"/>
                             <constraint firstItem="ySx-4x-v9d" firstAttribute="top" secondItem="e6i-gD-0fT" secondAttribute="bottom" constant="8" id="hYc-9m-Eh5"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1e6-8W-f9v" secondAttribute="trailing" constant="20" symbolic="YES" id="n0z-kG-yug"/>
@@ -423,6 +440,8 @@
                         <outlet property="playerTwoImageView" destination="pD0-zu-RKO" id="k2V-i8-MM6"/>
                         <outlet property="playerTwoName" destination="qxL-Zu-zwA" id="vek-SH-ptg"/>
                         <outlet property="playerTwoPoints" destination="sjx-Nf-Oqa" id="h8f-w3-6aU"/>
+                        <outlet property="progressImageView" destination="SvF-kM-ymi" id="3e0-7q-m8n"/>
+                        <outlet property="progressLabel" destination="gM4-fO-Xg2" id="45b-HU-Mc0"/>
                         <outlet property="questionLabel" destination="h4J-Kq-AmD" id="u6P-s3-iXf"/>
                         <outlet property="questionView" destination="e6i-gD-0fT" id="gJp-Rp-Frl"/>
                         <outlet property="tableView" destination="ySx-4x-v9d" id="tME-0a-rq7"/>
@@ -684,6 +703,7 @@
         <image name="fse1" width="400" height="200"/>
         <image name="image" width="45" height="45"/>
         <image name="logo-FSE" width="875" height="216"/>
+        <image name="match10" width="250" height="250"/>
         <image name="progress10" width="250" height="250"/>
     </resources>
 </document>

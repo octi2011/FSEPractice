@@ -14,6 +14,12 @@ class MatchViewController: UIViewController {
     var questions = [Question]()
     var roomId: String?
     
+    var timer: Timer?
+    var timeInt = 10
+    var count = 0
+    var player1Points = 0
+    var player2Points = 0
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
@@ -23,6 +29,8 @@ class MatchViewController: UIViewController {
     @IBOutlet weak var playerTwoName: UILabel!
     @IBOutlet weak var playerTwoPoints: UILabel!
     @IBOutlet weak var playerOnePoints: UILabel!
+    @IBOutlet weak var progressImageView: UIImageView!
+    @IBOutlet weak var progressLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +65,8 @@ class MatchViewController: UIViewController {
             if success {
             }
         }
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     private func getQuestions(completion: @escaping CompletionHandler) {
@@ -73,6 +83,17 @@ class MatchViewController: UIViewController {
                     return
                 }
             }, withCancel: nil)
+        }
+    }
+    
+    private func updateUserOneScore() {
+        if let room = roomId {
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
+            let ref = Database.database().reference().child(FirebaseChild.rooms).child(room).child(uid)
+            
+            let values = ["points": player1Points]
+            ref.updateChildValues(values)
         }
     }
     
@@ -106,10 +127,70 @@ class MatchViewController: UIViewController {
                     }
                     if let points = dict["points"] as? Int {
                         self.playerOnePoints.text = "\(String.init(describing: points)) Puncte"
+                        self.player1Points = points
                     }
                 }
                 completion(true)
             }
+        }
+    }
+    @objc func updateTimer() {
+        timeInt -= 1
+        progressLabel.text = String(describing: timeInt)
+        
+        progressImageView.image = UIImage(named: "match\(String(describing: timeInt))")
+        
+        
+        if timeInt == 0 {
+            if count == 5 {
+                timer?.invalidate()
+                if player1Points > player2Points {
+                    let alert = UIAlertController(title: "Bravo!", message: "Ai castigat!", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        self.navigationController?.popViewController(animated: true)
+                        if let room = self.roomId {
+                            let roomRef = Database.database().reference().child(FirebaseChild.rooms).child(room)
+                            roomRef.removeValue()
+                        }
+                    }
+                    alert.addAction(okAction)
+                    present(alert, animated: true, completion: nil)
+                } else if player1Points < player2Points {
+                    let alert = UIAlertController(title: "Ne pare rau!", message: "Ai pierdut!", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        self.navigationController?.popViewController(animated: true)
+                        if let room = self.roomId {
+                            let roomRef = Database.database().reference().child(FirebaseChild.rooms).child(room)
+                            roomRef.removeValue()
+                        }
+                        
+                    }
+                    alert.addAction(okAction)
+                    present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Egalitate!", message: "Ai intalnit un oponent pe masura ta!", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        self.navigationController?.popViewController(animated: true)
+                        if let room = self.roomId {
+                            let roomRef = Database.database().reference().child(FirebaseChild.rooms).child(room)
+                            roomRef.removeValue()
+                        }
+                    }
+                    alert.addAction(okAction)
+                    present(alert, animated: true, completion: nil)
+                }
+            } else {
+                questions.removeFirst()
+                self.tableView.reloadData()
+                self.questionLabel.text = questions.first?.question
+                tableView.allowsSelection = true
+                count += 1
+                timeInt = 10
+                
+                progressLabel.text = String(describing: timeInt)
+                progressImageView.image = UIImage(named: "progress\(String(describing: timeInt))")
+            }
+            
         }
     }
     
@@ -156,6 +237,7 @@ class MatchViewController: UIViewController {
                             }
                             if let points = dict["points"] as? Int {
                                 self.playerTwoPoints.text = "\(String.init(describing: points)) Puncte"
+                                self.player2Points = points
                             }
                         }
                         completion(true)
@@ -179,6 +261,20 @@ extension MatchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let question = questions.first {
+            let answer = question.answer
+            if indexPath.row == answer {
+                player1Points += 1
+                updateUserOneScore()
+                tableView.allowsSelection = false
+            } else {
+                tableView.allowsSelection = false
+            }
+            
+        }
     }
 }
 

@@ -22,10 +22,10 @@ class Question: NSObject {
     var firstAnswer: String?
     var secondAnswer: String?
     var thirdAnswer: String?
-    var answer: String?
+    var answer: Int?
     
     init?(dictionary: [String: AnyObject]) {
-        guard let question = dictionary[QuestionKey.question] as? String, let firstAnswer = dictionary[QuestionKey.firstAnswer] as? String, let secondAnswer = dictionary[QuestionKey.secondAnswer] as? String, let thirdAnswer = dictionary[QuestionKey.thirdAnswer] as? String, let answer = dictionary[QuestionKey.answer] as? String else { return nil }
+        guard let question = dictionary[QuestionKey.question] as? String, let firstAnswer = dictionary[QuestionKey.firstAnswer] as? String, let secondAnswer = dictionary[QuestionKey.secondAnswer] as? String, let thirdAnswer = dictionary[QuestionKey.thirdAnswer] as? String, let answer = dictionary[QuestionKey.answer] as? Int else { return nil }
         
         self.question = question
         self.firstAnswer = firstAnswer
