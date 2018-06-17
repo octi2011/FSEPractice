@@ -104,7 +104,6 @@ class CategoryDetailsViewController: UIViewController {
                 
                 let matchViewController = self.storyboard?.instantiateViewController(withIdentifier: StoryboardID.matchScreen) as! MatchViewController
                 matchViewController.navigationItem.setHidesBackButton(true, animated: true)
-                
                 self.navigationController?.pushViewController(matchViewController, animated: true)
                 
                 childRef.removeValue { (error, ref) in

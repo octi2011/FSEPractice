@@ -115,7 +115,7 @@ class MatchViewController: UIViewController {
     
     private func getSecondPlayer(completion: @escaping CompletionHandler) {
         
-        var otherPlayerId: String!
+        var otherPlayerId: String?
         if let room = roomId {
             guard let uid = Auth.auth().currentUser?.uid else { return }
             
@@ -128,35 +128,38 @@ class MatchViewController: UIViewController {
                         }
                     }
                 }
-                let otherRef = Database.database().reference().child(FirebaseChild.rooms).child(room).child(otherPlayerId)
-                otherRef.observe(.value) { (snapshot) in
-                    if let dict = snapshot.value as? [String: AnyObject] {
-                        if let userId = dict["userId"] as? String{
-                            Database.database().reference().child(FirebaseChild.users).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
-                                
-                                if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                if let otherId = otherPlayerId {
+                    let otherRef = Database.database().reference().child(FirebaseChild.rooms).child(room).child(otherId)
+                    otherRef.observe(.value) { (snapshot) in
+                        if let dict = snapshot.value as? [String: AnyObject] {
+                            if let userId = dict["userId"] as? String{
+                                Database.database().reference().child(FirebaseChild.users).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                                     
-                                    if let user = User(dictionary: dictionary) {
-                                        self.playerTwoName.text = user.username
-                                        if let pictureUrl = user.pictureUrl {
-                                            self.playerTwoImageView.loadImageUsingCache(withUrlString: pictureUrl)
+                                    if let dictionary = snapshot.value as? [String: AnyObject] {
+                                        
+                                        if let user = User(dictionary: dictionary) {
+                                            self.playerTwoName.text = user.username
+                                            if let pictureUrl = user.pictureUrl {
+                                                self.playerTwoImageView.loadImageUsingCache(withUrlString: pictureUrl)
+                                            }
+                                            completion(true)
+                                        } else {
+                                            completion(false)
+                                            return
                                         }
-                                        completion(true)
                                     } else {
                                         completion(false)
                                         return
                                     }
-                                } else {
-                                    completion(false)
-                                    return
-                                }
-                            }, withCancel: nil)
+                                }, withCancel: nil)
+                            }
+                            if let points = dict["points"] as? Int {
+                                self.playerTwoPoints.text = "\(String.init(describing: points)) Puncte"
+                            }
                         }
-                        if let points = dict["points"] as? Int {
-                            self.playerTwoPoints.text = "\(String.init(describing: points)) Puncte"
-                        }
+                        completion(true)
                     }
-                    completion(true)
                 }
             }, withCancel: nil)
         }
