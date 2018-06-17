@@ -39,6 +39,21 @@ class CategoryDetailsViewController: UIViewController {
     
     var questions = [Question]()
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        let queueRef = Database.database().reference().child(FirebaseChild.queue)
+        queueRef.removeAllObservers()
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let roomRef = Database.database().reference().child(FirebaseChild.queue)
+        let childRef = roomRef.child(uid)
+        childRef.removeValue { (error, ref) in
+            if error != nil {
+                print(error as Any)
+                return
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,6 +196,8 @@ class CategoryDetailsViewController: UIViewController {
             timeInt = 10
             progressLabel.text = String(describing: timeInt)
             progressImageView.image = UIImage(named: "progress\(String(describing: timeInt))")
+            let queueRef = Database.database().reference().child(FirebaseChild.queue)
+            queueRef.removeAllObservers()
             
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let roomRef = Database.database().reference().child(FirebaseChild.queue)
