@@ -122,10 +122,10 @@ class CategoryDetailsViewController: UIViewController {
                         
                         if let room = item["userId"] as? String {
                             matchViewController.roomId = room
-                            print(matchViewController.roomId!)
                         }
                         
-                        let value = [uid: uid]
+                        let values = ["userId": uid, "points": 0] as [String: AnyObject]
+                        let value = [uid: values]
                         refChildRef.updateChildValues(value, withCompletionBlock: { (error, ref) in
                             if error != nil {
                                 print(error as Any)

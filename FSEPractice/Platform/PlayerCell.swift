@@ -17,6 +17,9 @@ class PlayerCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        playerImageView.layer.cornerRadius = playerImageView.frame.width / 2
+        playerImageView.clipsToBounds = true
     }
     
     func configureCell(user: User) {
