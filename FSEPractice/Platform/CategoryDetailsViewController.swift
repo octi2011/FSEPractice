@@ -68,9 +68,6 @@ class CategoryDetailsViewController: UIViewController {
         fetchUsers()
     }
     
-    @IBAction func onStatsTapped(_ sender: Any) {
-    }
-    
     private func fetchUsers() {
         Database.database().reference().child(FirebaseChild.users).observe(.childAdded, with: { (snapshot) in
             
@@ -147,29 +144,33 @@ class CategoryDetailsViewController: UIViewController {
                             }
                         })
                         
-                        self.getQuestions { (success) in
-                            if success {
-                                self.questions.shuffle()
-                                let questionsToSend = self.questions.prefix(6)
-                                let questionsArray = Array(questionsToSend)
-                                var dictArray = [[String: AnyObject]]()
-                                for item in questionsArray {
-                                    var qDict = [String: AnyObject]()
-                                    qDict[QuestionKey.question] = item.question as AnyObject
-                                    qDict[QuestionKey.firstAnswer] = item.firstAnswer as AnyObject
-                                    qDict[QuestionKey.secondAnswer] = item.secondAnswer as AnyObject
-                                    qDict[QuestionKey.thirdAnswer] = item.thirdAnswer as AnyObject
-                                    qDict[QuestionKey.answer] = item.answer as AnyObject
-                                    dictArray.append(qDict)
-                                }
-                                let qValues = ["questions": dictArray]
-                                
-                                refChildRef.updateChildValues(qValues, withCompletionBlock: { (error, ref) in
-                                    if error != nil {
-                                        print(error as Any)
-                                        return
+                        if let room = item["userId"] as? String {
+                            if(uid == room) {
+                                self.getQuestions { (success) in
+                                    if success {
+                                        self.questions.shuffle()
+                                        let questionsToSend = self.questions.prefix(6)
+                                        let questionsArray = Array(questionsToSend)
+                                        var dictArray = [[String: AnyObject]]()
+                                        for item in questionsArray {
+                                            var qDict = [String: AnyObject]()
+                                            qDict[QuestionKey.question] = item.question as AnyObject
+                                            qDict[QuestionKey.firstAnswer] = item.firstAnswer as AnyObject
+                                            qDict[QuestionKey.secondAnswer] = item.secondAnswer as AnyObject
+                                            qDict[QuestionKey.thirdAnswer] = item.thirdAnswer as AnyObject
+                                            qDict[QuestionKey.answer] = item.answer as AnyObject
+                                            dictArray.append(qDict)
+                                        }
+                                        let qValues = ["questions": dictArray]
+                                        
+                                        refChildRef.updateChildValues(qValues, withCompletionBlock: { (error, ref) in
+                                            if error != nil {
+                                                print(error as Any)
+                                                return
+                                            }
+                                        })
                                     }
-                                })
+                                }
                             }
                         }
                     }

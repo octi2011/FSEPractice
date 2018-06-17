@@ -37,6 +37,12 @@ class CategoriesViewController: UIViewController {
         }
         
     }
+   
+    @IBAction func onMyAccountTapped(_ sender: Any) {
+        let myAccountViewController = storyboard?.instantiateViewController(withIdentifier: StoryboardID.myAccountScreen) as! MyAccountViewController
+        navigationController?.pushViewController(myAccountViewController, animated: true)
+    }
+    
 }
 
 extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {

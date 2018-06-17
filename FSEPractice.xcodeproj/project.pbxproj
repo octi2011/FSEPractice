@@ -48,6 +48,7 @@
 		DEC3C8B820D5691500FCBFBD /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8B720D5691500FCBFBD /* MatchViewController.swift */; };
 		DEC3C8BA20D5747300FCBFBD /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8B920D5747300FCBFBD /* AnswerCell.swift */; };
 		DEC3C8BC20D5776600FCBFBD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3C8BB20D5776600FCBFBD /* Question.swift */; };
+		DEF37F0620D6D220008EBE74 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF37F0520D6D220008EBE74 /* MyAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		DEC3C8B720D5691500FCBFBD /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		DEC3C8B920D5747300FCBFBD /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		DEC3C8BB20D5776600FCBFBD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		DEF37F0520D6D220008EBE74 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				DEC3C8B520D54F2900FCBFBD /* HalfRoundedView.swift */,
 				DEC3C8B720D5691500FCBFBD /* MatchViewController.swift */,
 				DEC3C8B920D5747300FCBFBD /* AnswerCell.swift */,
+				DEF37F0520D6D220008EBE74 /* MyAccountViewController.swift */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				DEC3C8A120D51DA500FCBFBD /* LoginPresenter.swift in Sources */,
 				DEC3C86E20D5088400FCBFBD /* UIColorExtensions.swift in Sources */,
 				DEC3C8AC20D52F3100FCBFBD /* CategoryCell.swift in Sources */,
+				DEF37F0620D6D220008EBE74 /* MyAccountViewController.swift in Sources */,
 				DEC3C85D20D5076500FCBFBD /* CategoriesViewController.swift in Sources */,
 				DEC3C88D20D5126B00FCBFBD /* RoundedView.swift in Sources */,
 				DEC3C8B220D53C0B00FCBFBD /* PlayerCell.swift in Sources */,

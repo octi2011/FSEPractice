@@ -18,6 +18,8 @@ struct StoryboardID {
     static let detailsScreen = "details"
     
     static let matchScreen = "match"
+    
+    static let myAccountScreen = "myAccount"
 }
 
 struct UserDefaultsKey {

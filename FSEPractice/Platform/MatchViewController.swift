@@ -46,13 +46,14 @@ class MatchViewController: UIViewController {
         playerTwoImageView.layer.cornerRadius = playerTwoImageView.frame.width / 2
         playerTwoImageView.clipsToBounds = true
         
-        getQuestions { (success) in
-            if success {
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.getQuestions { (success) in
+                if success {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    self.questionLabel.text = self.questions.first?.question
                 }
-                self.questionLabel.text = self.questions.first?.question
             }
         }
         
@@ -75,6 +76,7 @@ class MatchViewController: UIViewController {
             ref.observe(.childAdded, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     if let question = Question(dictionary: dictionary) {
+                        print(question.question!)
                         self.questions.append(question)
                     }
                     completion(true)
@@ -203,6 +205,9 @@ class MatchViewController: UIViewController {
                 }
             } else {
                 questions.removeFirst()
+                for q in questions {
+                    print(q.question!)
+                }
                 self.tableView.reloadData()
                 self.questionLabel.text = questions.first?.question
                 tableView.allowsSelection = true
