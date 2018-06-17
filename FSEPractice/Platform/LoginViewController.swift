@@ -1,6 +1,6 @@
 //
 //  LoginViewController.swift
-//  Granis
+//  FSEPractice
 //
 //  Created by Octavian Duminica on 14/06/2018.
 //  Copyright © 2018 Duminica Octavian. All rights reserved.
